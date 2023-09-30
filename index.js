@@ -1,7 +1,8 @@
-const express = require('express');
+import Joi from 'joi';
+import express from 'express';
 const app = express();
 
-app.use(express.json())
+app.use(json())
 
 const courses = [
     { id: 1, name: "course1" },
@@ -17,6 +18,10 @@ app.get('/api/courses', (req, res) => {
 })
 
 app.post('/api/courses', (req, res) => {
+    if (!req.body.name || req.body.name.length < 3) {
+        res.status(400).send('Name is required and should be minimum of three characters')
+        return;
+    }
     const course = {
         id: courses.length + 1,
         name: req.body.name
