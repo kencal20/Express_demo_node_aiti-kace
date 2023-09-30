@@ -16,7 +16,7 @@ app.get('/api/courses', (req, res) => {
     res.send(courses);
 })
 
-app.post('api/courses', (req, res) => {
+app.post('/api/courses', (req, res) => {
     const course = {
         id: courses.length + 1,
         name: req.body.name
