@@ -18,13 +18,9 @@ app.get('/api/courses', (req, res) => {
 })
 
 app.post('/api/courses', (req, res) => {
-    const schema = {
-        name: Joi.string().min(3).required()
-    };
-    const result = Joi.validate(req.body, schema)
-
-    if (result.error) {
-        res.status(400).send(result.error.details[0].message)
+    const { error } = validateCourse(req.body);
+    if (error) {
+        res.status(400).send(error.details[0].message)
         return;
     }
     const course = {
@@ -50,8 +46,6 @@ app.put('/api/courses/:id', (req, res) => {
 
 
     const { error } = validateCourse(req.body);
-    // validate -400 
-
     if (error) {
         res.status(400).send(error.details[0].message)
         return;
@@ -72,6 +66,10 @@ function validateCourse(course) {
     return Joi.validate(course, schema);
 }
 
+
+app.delete('/api/courses/:id', (req, res) => {
+//
+})
 
 
 app.get('/api/courses/:id', (req, res) => {
