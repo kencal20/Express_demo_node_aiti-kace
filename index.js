@@ -48,6 +48,7 @@ app.put('/api/courses/:id', (req, res) => {
         res.status(404).send('the course id stated was not found')
     }
 
+    const result = validateCourse(req.body);
     // validate -400 
 
     if (result.error) {
