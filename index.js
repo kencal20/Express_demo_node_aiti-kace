@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 app.get('/api/courses', (req, res) => {
     res.send(courses);
 })
-app.get('/api/course/:id', (req, res) => {
+app.get('/api/courses/:id', (req, res) => {
     const course = courses.find(c => c.id === parseInt(req.params.id))
     if (course) {
         res.send(course)
