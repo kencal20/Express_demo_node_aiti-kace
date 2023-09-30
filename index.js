@@ -49,7 +49,7 @@ app.put('/api/courses/:id', (req, res) => {
     }
 
     // validate -400 
-  
+
     if (result.error) {
         res.status(400).send(result.error.details[0].message)
         return;
@@ -67,7 +67,7 @@ function validateCourse(course) {
     const schema = {
         name: Joi.string().min(3).required()
     };
-    const result = Joi.validate(req.body, schema);
+    return Joi.validate(course, schema);
 }
 
 
