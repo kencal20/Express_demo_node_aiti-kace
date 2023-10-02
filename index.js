@@ -4,6 +4,7 @@ const helmet = require('helmet')
 const morgan = require('morgan');
 const logger = require('./logger');
 const auth = require('./auth');
+const config = require('config');
 const app = express();
 
 // console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
@@ -16,7 +17,14 @@ app.use(express.static('public'))
 app.use(helmet());
 app.use(morgan('tiny'));
 
-if(app.get('env') === 'development'){
+
+
+console.log('Application Name: ' + config.get('name'));
+
+console.log('Mail Server: ' + config.get('mail.host'));
+
+
+if (app.get('env') === 'development') {
     app.use(morgan('tiny'));
     console.log('Morgan enabled...');
 }
