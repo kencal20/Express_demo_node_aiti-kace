@@ -28,8 +28,10 @@ console.log('Mail Password: ' + config.get('mail.password '));
 
 if (app.get('env') === 'development') {
     app.use(morgan('tiny'));
-    console.log('Morgan enabled...');
+ 
 }
+
+
 
 app.use(logger);
 app.use(auth)
