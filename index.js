@@ -6,13 +6,16 @@ const logger = require('./logger');
 const auth = require('./auth');
 const app = express();
 
+console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
 
+app.get('env')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(helmet());
-app.use(morgan('tiny'));
+app.use(morgan());
+
 
 
 app.use(logger);
