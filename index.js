@@ -6,34 +6,22 @@ const logger = require('./logger');
 const auth = require('./auth');
 const app = express();
 const courses = require('./routes/courses')
-const debug =require('./debug');
-
-// console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
-
-// app.get('env')
+const debug = require('./debug');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(helmet());
-app.use(morgan('tiny'));
-app.use('/',courses)
 
-
-
-
-
-
+// Conditionally add morgan middleware for development environment
 if (app.get('env') === 'development') {
     app.use(morgan('tiny'));
-
 }
 
-
+app.use('/', courses);
 app.use(debug);
 app.use(logger);
-app.use(auth)
-
+app.use(auth);
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`listening on port ${port}.....`))
+app.listen(port, () => console.log(`Listening on port ${port}.....`))
