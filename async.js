@@ -1,7 +1,12 @@
 console.log('Before');
 getUser(1, (user) => {
-    console.log('User', user);
+    console.log(user);
+
+    getRepository(user.gutHubUserName, (repos) => {
+        console.log(repos)
+    })
 });
+
 console.log('After');
 
 function getUser(id, callback) {
@@ -12,3 +17,9 @@ function getUser(id, callback) {
 
 }
 
+function getRepository(username, callback) {
+    setTimeout(() => {
+        console.log('Displaying your repos ');
+        callback({ repo: ['repo1', 'repo2', 'repo3'] })
+    }, 2000);
+}
