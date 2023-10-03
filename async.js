@@ -1,9 +1,9 @@
 console.log('Before');
 getUser(1, (user) => {
-    console.log(user);
-
-    getRepository(user.gutHubUserName, (repos) => {
-        console.log(repos)
+getRepository(user.gutHubUserName, (repos) => {
+getCommits(repos,(commits)=>{
+    
+})
     })
 });
 
