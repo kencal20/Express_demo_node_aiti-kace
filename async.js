@@ -1,13 +1,10 @@
 console.log('Before');
-getUser(1, (user) => {
-getRepository(user.gutHubUserName, (repos) => {
-getCommits(repos,(commits)=>{
-    
-})
-    })
+getUser(1, (getRepository) => {
+
 });
 
 console.log('After');
+
 
 function getUser(id, callback) {
     setTimeout(() => {
@@ -23,3 +20,16 @@ function getRepository(username, callback) {
         callback({ repo: ['repo1', 'repo2', 'repo3'] })
     }, 2000);
 }
+
+
+function displayCommits(commits){
+    console.log(commits)
+}
+
+function  getCommits(repos){
+    getCommits(repos,displayCommits)
+}
+
+ function getRepository(user){
+    getRepository(user.gutHubUserName,getCommits);
+ }
