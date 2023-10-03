@@ -1,5 +1,5 @@
 console.log('Before');
-// getUser(1, (user) => {
+//  getUser(1, (user) => {
 //     getRepository(user.gutHubUserName, (repos) => {
 //         getCommits(repos, (commits) => {
 
@@ -10,7 +10,7 @@ console.log('Before');
 getUser(1)
     .then(user => getRepository(user.gutHubUserName))
     .then(repo => getCommits(repo[0]))
-    .then(commits => console.log('Commits', commits))
+    .then(commits => console.log('Commits:', commits))
 
 
 console.log('After');
@@ -42,7 +42,8 @@ function getCommits(repo) {
 
         setTimeout(() => {
             console.log('calling github api....')
-            resolve("commit")
+            resolve(["commit"])
         })
     })
 }
+ 
