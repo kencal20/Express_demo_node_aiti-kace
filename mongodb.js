@@ -28,11 +28,17 @@ async function createCourse() {
 
 }
 async function getCourses() {
-// or ,and
     const courses = await Course
-        .find()
+        //. names that start with Ken
+        .find({ author: /^Ken/ })
+        // name that end with cal
+        .find({ author: /Cal$/i })
+        //Contains ken anywhere
+        .find({ author: /.*ken.*/i })
+        .limit(10)
         .sort({ name: 1 })
         .select({ name: 1, tag: 1 })
+
     console.log(courses);
 }
 
