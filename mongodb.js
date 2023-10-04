@@ -28,11 +28,20 @@ async function createCourse() {
 
 }
 async function getCourses() {
+    /* eq - (==);
+    nq - (!=);
+    gt - (>);
+    gte - (>=)
+     lt - (<=)
+    lte -(<=)
+    in
+    nin - not in
+*/
     const courses = await Course
         .find({ author: "Ken", isPublished: true })
         .limit(10)
         .sort({ name: 1 })
-        .select({name:1,tag:1})
+        .select({ name: 1, tag: 1 })
     console.log(courses);
 }
 
